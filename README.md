@@ -7,99 +7,110 @@
 
 <br>
 
-Uma API RESTful elegante e performática desenvolvida **100% com o módulo nativo `http` do Node.js**, sem o uso de frameworks externos como Express ou Fastify. O projeto foca em arquitetura limpa, separação de responsabilidades e boas práticas de desenvolvimento utilizando TypeScript.
+An elegant and performant RESTful API built **100% with Node.js native `http` module**, without relying on external frameworks like Express or Fastify. The project focuses on clean architecture, separation of concerns, and best development practices using TypeScript.
 
 ---
 
-## 📖 Sobre o Projeto
-Este é um projeto desenvolvido como desafio final do Bootcamp de Node.js da **DIO**. O principal objetivo é construir um gerenciador de episódios de podcasts compreendendo os fundamentos do Node.js por debaixo dos panos, implementando padrões de projeto (MVC/Arquitetura em Camadas) e garantindo segurança e escalabilidade através da tipagem estática do TypeScript.
+## 📖 About the Project
 
-## ✨ Funcionalidades
-- **Listagem de Podcasts**: Retorna todos os episódios de podcasts disponíveis na base de dados.
-- **Busca e Filtragem**: Permite buscar episódios de um podcast específico via *Query String*.
-- **Arquitetura Escalável**: Código extremamente estruturado dividido em `Controllers`, `Services`, `Repositories` e `Models`.
-- **Zero Dependências de Roteamento**: Roteamento construído "do zero" utilizando apenas a API `http` nativa do Node.js.
-- **Padronização de Respostas**: Retornos padronizados utilizando enums para `StatusCodes` e `ContentTypes`.
+This project was developed as the final challenge for the **DIO** Node.js Bootcamp. The main goal is to build a podcast episode manager to deeply understand the fundamentals of Node.js under the hood, implementing design patterns (MVC / Layered Architecture) and ensuring safety and scalability through TypeScript's static typing.
 
-## 🚀 Tecnologias Utilizadas
-- **[Node.js](https://nodejs.org/en/)**: Execução JavaScript *Server-side* (utilizando módulos nativos `http`, `fs`, `path`).
-- **[TypeScript](https://www.typescriptlang.org/)**: Tipagem estática para maior previsibilidade e menos bugs.
-- **[tsx](https://github.com/esbuild-kit/tsx)**: Motor de execução de TypeScript super rápido para ambiente de desenvolvimento.
+## ✨ Features
 
-## 📁 Estrutura do Projeto
+- **Podcast Listing**: Returns all available podcast episodes from the database.
+- **Search and Filtering**: Allows searching for episodes of a specific podcast via *Query String*.
+- **Scalable Architecture**: Highly structured code divided into `Controllers`, `Services`, `Repositories`, and `Models`.
+- **Zero Routing Dependencies**: Routing built "from scratch" using only the native Node.js `http` API.
+- **Standardized Responses**: Standardized outputs using enums for `StatusCodes` and `ContentTypes`.
 
-A aplicação foi desenhada visando a separação clara de conceitos:
+## 🚀 Technologies Used
+
+- **[Node.js](https://nodejs.org/en/)**: Server-side JavaScript execution (using native `http`, `fs`, `path` modules).
+- **[TypeScript](https://www.typescriptlang.org/)**: Static typing for better predictability and fewer bugs.
+- **[tsx](https://github.com/esbuild-kit/tsx)**: Lightning-fast TypeScript execution engine for the development environment.
+
+## 📁 Project Structure
+
+The application was designed with a clear separation of concerns in mind:
 
 ```text
 src/
-├── controllers/    # Lida com os dados da requisição HTTP (req, res)
-├── models/         # Interfaces e contratos de dados (ex: PodcastTransferModel)
-├── repositories/   # Camada de persistência (leitura do arquivo .json)
-├── routes/         # Centralização dos endpoints disponíveis (Enums)
-├── services/       # Regras de negócio da aplicação
-├── utils/          # Utilitários globais (Status Code, Content Type, etc)
-├── app.ts          # Arquivo principal que gerencia o fluxo das rotas
-└── server.ts       # Inicialização do servidor na porta definida
+├── controllers/    # Handles HTTP request and response data (req, res)
+├── models/         # Interfaces and data contracts (e.g., PodcastTransferModel)
+├── repositories/   # Persistence layer (reads the .json file)
+├── routes/         # Centralization of available endpoints (Enums)
+├── services/       # Application business rules
+├── utils/          # Global utilities (Status Code, Content Type, etc)
+├── app.ts          # Main file managing the routing flow
+└── server.ts       # Server initialization on the defined port
 ```
 
 ---
 
-## ⚙️ Como Executar na Sua Máquina
+## ⚙️ How to Run Locally
 
-### Pré-requisitos
-- **Node.js** (versão 18 ou superior)
-- Gerenciador de pacotes **npm** ou **yarn**
+### Prerequisites
 
-### Passo a passo
+- **Node.js** (version 18 or higher)
+- **npm** or **yarn** package manager
 
-1. **Clone este repositório:**
+### Step-by-Step
+
+1. **Clone this repository:**
+
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/DPViega/Gerenciador-de-Podcasts---API-NodeJS-Com-Typescript-e-HTTP-Module-DIO.git
    ```
+2. **Navigate to the project folder:**
 
-2. **Acesse a pasta do projeto:**
    ```bash
-   cd "1- Gerenciador de Podcast - Node com Type e HTTP Module"
+   cd "Gerenciador-de-Podcasts---API-NodeJS-Com-Typescript-e-HTTP-Module-DIO"
    ```
+3. **Install dependencies:**
 
-3. **Instale as dependências:**
    ```bash
    npm install
    ```
+4. **Configure Environment Variables:**
+   Create a file named `.env` in the root of the project with the following keys:
 
-4. **Configure as Variáveis de Ambiente:**
-   Crie um arquivo chamado `.env` na raiz do projeto com as seguintes chaves:
    ```env
    PORT=8080
    CHARACTER_ENCODING=utf-8
    ```
+5. **Start the server locally:**
 
-5. **Inicie o servidor localmente:**
    ```bash
    npm run dev
    ```
-   > 🚀 *O servidor estará rodando em `http://localhost:8080`*
+
+   > 🚀 *The server will be running at `http://localhost:8080`*
+   >
 
 ---
 
-## 🌐 Endpoints da API
+## 🌐 API Endpoints
 
-### 1. Listar todos os episódios
-Retorna a lista completa de todos os episódios de podcasts cadastrados no sistema.
-- **Método**: `GET`
-- **Rota**: `/api/list`
+### 1. List all episodes
 
-### 2. Filtrar episódios por podcast
-Retorna os episódios filtrados pelo nome do podcast fornecido no parâmetro de busca.
-- **Método**: `GET`
-- **Rota**: `/api/podcasts?p=nome_do_podcast`
-- **Exemplo de Uso**: 
+Returns the complete list of all registered podcast episodes in the system.
+
+- **Method**: `GET`
+- **Route**: `/api/list`
+
+### 2. Filter episodes by podcast
+
+Returns episodes filtered by the podcast name provided in the search parameter.
+
+- **Method**: `GET`
+- **Route**: `/api/podcasts?p=podcast_name`
+- **Usage Example**:
   ```http
   GET http://localhost:8080/api/podcasts?p=flow
   ```
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Desenvolvido com 🩵 como parte dos desafios avançados do Bootcamp de Node.js da Digital Innovation One (DIO).
+Developed with 🩵 as part of the advanced challenges for the Digital Innovation One (DIO) Node.js Bootcamp.
